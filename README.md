@@ -60,20 +60,6 @@ backend/
 - **POST** `/api/tasks` – Add a new task
 - **DELETE** `/api/tasks/:id` – Delete a task
 
----
-
-## ▶️ How to Run Locally
-
-1. Clone the repository  
-2. Install dependencies  
-3. Start the server  
-
-The API will run on:
-http://localhost:5000
-
-yaml
-Copy code
-*(Port may vary based on configuration)*
 
 ---
 
