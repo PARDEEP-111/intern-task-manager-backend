@@ -2,10 +2,14 @@ const  express = require("express");
 const app = express();
 
  app.use(express.json());
+ //                                        importing routes
+const authRoutes = require("./routes/auth")
+const taskRoutes = require("./routes/tasks")
+//                                          mount routes 
+app.use("/api/auth",authRoutes);
+app.use("/api/tasks",taskRoutes);
 
- app.get("/",(req,res)=>{
-    res.send("app is working")
- });
+
  const Port = 5000;
 
  app.listen(Port,()=>{
