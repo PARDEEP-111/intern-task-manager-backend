@@ -1,5 +1,6 @@
 const  express = require("express");
 const app = express();
+const  logger = require("./middleware/logger")
 
  app.use(express.json());
  //                                        importing routes
@@ -9,7 +10,7 @@ const taskRoutes = require("./routes/tasks")
 app.use("/api/auth",authRoutes);
 app.use("/api/tasks",taskRoutes);
 
-
+app.use(logger)
  const Port = 5000;
 
  app.listen(Port,()=>{
