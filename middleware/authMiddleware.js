@@ -14,8 +14,8 @@ module.exports = function (req, res, next) {
         req.user = decoded
     } catch(error)
     {
-        return res.status(403).json({ message: "Invalid or expired token provided" })
         console.log(error.message)
+        return res.status(403).json({ message: "Invalid or expired token provided" })
 
     }
     next()
