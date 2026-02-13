@@ -17,4 +17,6 @@ router.get("/", (req,res)=>{
      )
      res.json({token})
  })
+ const {registerUser}= require("../controllers/auth")
+ router.post("/register",registerUser);
 module.exports = router
