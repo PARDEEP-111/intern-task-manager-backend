@@ -9,7 +9,7 @@ const fs = require("fs")
  }
  function writeData(fileName,data){
     const filePath = path.join(__dirname,"..","data", fileName)
-    fs.writeFileSync(filePath, Json.stringify(data, null,2))
+    fs.writeFileSync(filePath, JSON.stringify(data, null,2))
  }
   module.exports ={
         readData,

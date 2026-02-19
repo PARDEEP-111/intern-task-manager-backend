@@ -1,12 +1,11 @@
 const express = require("express");
 const router =  express.Router();
-const auth = require("../middleware/auth")
-const {readData,writeData}=  require("../utils/fileHandler")
-const authMiddleware = require("../middleware/auth");
+const authMiddleware = require("../middleware/authMiddleware");
+const {readData,writeData}=  require("../utils/fileHandler");
 
      
-router.use(authMiddleware)
-router.get("/",auth, (req, res) => {
+router.use(authMiddleware);
+router.get("/", (req, res) => {
     const tasks = readData("tasks.json");
     res.json(tasks);
 });

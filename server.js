@@ -1,14 +1,7 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const app = express();
 const logger = require("./middleware/logger");
-app.use(logger)
-
-mongoose.connect('mongodb://127.0.0.1:27017/TaskManager').then(() => {
-  console.log('MongoDB connected successfully');
-}).catch((err) => {
-  console.error('MongoDB connection error:', err.message);
-});
+app.use(logger);
 
  app.use(express.json());
  //                                        importing routes
