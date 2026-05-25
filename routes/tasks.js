@@ -1,28 +1,70 @@
-const express = require("express");
-const router =  express.Router();
-const authMiddleware = require("../middleware/authMiddleware");
-const {readData,writeData}=  require("../utils/fileHandler");
+const express = require("express")
+const router = express.Router()
+const authMiddlewere = require("../middleware/authMiddleware")
+const Task = require("../model/task")
 
-     
-router.use(authMiddleware);
-router.get("/", (req, res) => {
-    const tasks = readData("tasks.json");
-    res.json(tasks);
-});
- 
-router.post("/", (req,res)=>{
-    const {title} =req.body;
-if(!title){
-    return res.status(400).json({ message:"title is required"});
-}
-const tasks = readData("tasks.json");
- const newTask ={
-    id: Date.now(),
-    title
- }
-    
-     tasks.push(newTask)
-     writeData("tasks.json",tasks)
-     res.status(201).json(newTask)
+
+// protects all routes
+router.use(authMiddlewere)
+
+
+// gets all tasks for loged in user
+router.get("/", async (req, res) => {
+    try {
+        const tasks = await Task.find({
+            owner: req.user.id
+        });
+        res.json(tasks)
+    } catch (error) {
+        res.status(500).json({
+            message: "server error"
+        })
+    }
 })
+
+// creates new tasks
+
+router.post("/", async (req, res) => {
+    try {
+        const { title } = req.body
+        if (!title) {
+            return res.status(400).json({
+                message: "title is required"
+            })
+        }
+        const newTask = await Task.create({
+            title,
+            owner: req.user.id
+        })
+        res.status(201).json(newTask)
+    } catch (error) {
+        res.status(500).json({
+            message: "server error"
+        })
+    }
+})
+
+// Delet tasks
+
+router.delete("/:id", async (req, res) => {
+    try {
+        const deletedTask = await Task.findOneAndDelete({
+            _id: req.params.id,
+            owner: req.user.id
+        })
+        if (!deletedTask) {
+            return res.status(404).json({
+                message: " Task not found  or not allowed"
+            })
+        }
+        res.json({
+            message: "task deleted"
+        })
+    } catch (error) {
+        res.status(500).json({
+            message: "Server error"
+        });
+    }
+})
+
 module.exports = router;
