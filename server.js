@@ -14,7 +14,8 @@ app.use("/api/auth",authRoutes);
 app.use("/api/tasks",taskRoutes);
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://<username>:<password>@cluster.mongodb.net/taskmanager', { useNewUrlParser: true, useUnifiedTopology: true })
+// mongoose.connect('mongodb+srv://<username>:<password>@cluster.mongodb.net/taskmanager', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect("mongodb://localhost:27017/taskmanager")
     .then(() => console.log('Connected to MongoDB'))
     .catch(err => console.error('MongoDB connection error:', err));
 
