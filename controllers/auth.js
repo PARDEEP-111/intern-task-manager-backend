@@ -47,6 +47,8 @@ exports.loginUser = async (req, res) => {
 const foundUser = await User.findOne({
     username
 });
+console.log(foundUser);
+
         if (!foundUser) {
             return res.status(401).json({ message: "Invalid credentials" });
         }
