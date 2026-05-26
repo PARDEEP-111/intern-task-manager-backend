@@ -67,5 +67,35 @@ router.delete("/:id", async (req, res) => {
         });
     }
 })
+// update task
+router.patch("/:id",async (req,res)=>{
+    try{
+        const {title,description, completed}= req.body;
+const updateTask = await Task.findOneAndUpdate(
+    {
+        _id: req.params.id,
+        owner: req.user.id
+    },
+    {
+        title,
+        description,
+        completed
+    },
+    {
+        new: true
+    }
+)
+    if(!updateTask){
+        return res.status(404).json({
+            message: "Task not found or not allowed"
+        });
+    }
+    res.json(updateTask);
+    }catch(error){
+      res.status(500).json({
+        message:"server error"
+      })  
+    }
+})
 
 module.exports = router;
