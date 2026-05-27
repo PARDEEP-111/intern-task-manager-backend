@@ -1,82 +1,69 @@
-# intern-task-manager-backend
-Node.js + Express backend with authentication and user-specific task management using file-based storage.
-
-
 # Intern Task Manager Backend
 
-A simple **Node.js + Express REST API** with authentication and **user-specific task management**, using **file-based JSON storage**.  
-Built as a backend practice project for internship preparation.
+A secure REST API built with Node.js, Express, and MongoDB for user authentication and task management.
+
+This project was built as a backend practice project to learn real-world backend concepts such as authentication, authorization, CRUD operations, route protection, and database integration.
 
 ---
 
 ## 🚀 Features
-- User signup & login
-- Password hashing with bcrypt
-- JWT-based authentication
-- User-specific tasks
-- Create, read, and delete tasks
-- Clean folder structure
-- File-based storage (JSON)
+
+### Authentication
+- User registration
+- User login
+- Password hashing using bcrypt
+- JWT authentication
+- Protected routes
+
+### Task Management
+- Create tasks
+- Read user-specific tasks
+- Update tasks
+- Delete tasks
+- Ownership-based authorization
+
+### Validation & Security
+- Input validation
+- Prevent empty/space-only titles
+- Dynamic PATCH updates
+- User-specific task access
+- Environment variable support
 
 ---
 
 ## 🛠 Tech Stack
+
 - Node.js
 - Express.js
+- MongoDB
+- Mongoose
 - bcrypt
 - JSON Web Token (JWT)
-- File system (JSON)
+- dotenv
 
 ---
 
 ## 📁 Folder Structure
-backend/
+
+```bash
+intern-task-manager-backend/
 │
-├── data/
-│ ├── users.json
-│ └── tasks.json
-│
-├── routes/
-│ ├── auth.js
-│ └── tasks.js
+├── controllers/
+│   └── auth.js
 │
 ├── middleware/
-│ └── authMiddleware.js
+│   └── authMiddleware.js
 │
-├── utils/
-│ └── fileHandler.js
+├── model/
+│   ├── task.js
+│   └── user.js
 │
+├── routes/
+│   ├── auth.js
+│   └── tasks.js
+│
+├── .env
+├── .gitignore
 ├── server.js
-└── package.json
-
-## 🔑 API Endpoints
-
-### Authentication
-- **POST** `/api/signup` – Register a new user
-- **POST** `/api/login` – Login user
-
-### Tasks (Protected)
-- **GET** `/api/tasks` – Get logged-in user’s tasks
-- **POST** `/api/tasks` – Add a new task
-- **DELETE** `/api/tasks/:id` – Delete a task
-
-
----
-
-## 📌 Notes
-- This project uses **file-based storage** for simplicity.
-- No database is used intentionally.
-- Designed to demonstrate backend fundamentals clearly.
-
----
-
-## 📈 Future Improvements
-- Replace JSON storage with MongoDB
-- Add task update functionality
-- Improve validation and error handling
-
----
-
-## 👨‍💻 Author
-**Pardeep Singh**  
-BCA Student | Aspiring Full Stack Developer
+├── package.json
+└── README.md

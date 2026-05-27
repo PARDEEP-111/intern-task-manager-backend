@@ -27,14 +27,19 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
     try {
         const { title,description } = req.body
-        if (!title) {
+        if (!title || title.trim()=== "") {
             return res.status(400).json({
                 message: "title is required"
             })
         }
+        if(description !== undefined && description.trim()==="" && description !== ""){
+ return res.status(400).json({
+        message: "description cannot contain only spaces"
+    });
+        }
         const newTask = await Task.create({
-            title,
-            description,
+           title: title.trim(),
+        description: description?.trim()|| "",
             owner: req.user.id
         })
         res.status(201).json(newTask)
@@ -71,16 +76,26 @@ router.delete("/:id", async (req, res) => {
 router.patch("/:id",async (req,res)=>{
     try{
         const {title,description, completed}= req.body;
+        const updates = {};
+            if(title !== undefined){
+                updates.title = title
+            }
+            if(description !== undefined){
+                updates.description = description
+            }
+            if(completed !== undefined){
+                updates.completed = completed
+            }
+
+
 const updateTask = await Task.findOneAndUpdate(
     {
         _id: req.params.id,
         owner: req.user.id
     },
-    {
-        title,
-        description,
-        completed
-    },
+    
+       updates,
+    
     {
         new: true
     }
