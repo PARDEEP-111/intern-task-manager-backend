@@ -1,67 +1,71 @@
 # Intern Task Manager Backend
 
-A secure REST API built with Node.js, Express, and MongoDB for user authentication and task management.
+This project is part of my journey to learn full-stack web development and prepare for internships.
 
-This project was built as a backend practice project to learn real-world backend concepts such as authentication, authorization, CRUD operations, route protection, and database integration.
+I built this backend to practice real backend concepts like:
+- authentication
+- authorization
+- CRUD operations
+- MongoDB integration
+- REST APIs
+- route protection
+- validation
+
+The goal is to eventually connect this backend with a React / Next.js frontend and build a complete full-stack application.
 
 ---
 
-## 🚀 Features
+## 🚀 What This Project Can Do
 
 ### Authentication
-- User registration
-- User login
-- Password hashing using bcrypt
-- JWT authentication
-- Protected routes
+- Register users
+- Login users
+- Hash passwords using bcrypt
+- Generate JWT tokens
+- Protect private routes
 
 ### Task Management
 - Create tasks
-- Read user-specific tasks
+- Read logged-in user tasks
 - Update tasks
 - Delete tasks
-- Ownership-based authorization
+- Restrict users to only their own tasks
 
 ### Validation & Security
-- Input validation
-- Prevent empty/space-only titles
-- Dynamic PATCH updates
-- User-specific task access
+- Prevent empty titles
+- Prevent space-only values
+- Protected routes using middleware
 - Environment variable support
 
 ---
 
 ## 🛠 Tech Stack
 
+### Backend
 - Node.js
 - Express.js
 - MongoDB
 - Mongoose
 - bcrypt
-- JSON Web Token (JWT)
+- JWT
 - dotenv
+
+### Frontend (Planned)
+- React.js
+- Next.js
+- Tailwind CSS
 
 ---
 
-## 📁 Folder Structure
+## 📁 Project Structure
 
 ```bash
 intern-task-manager-backend/
 │
 ├── controllers/
-│   └── auth.js
-│
 ├── middleware/
-│   └── authMiddleware.js
-│
 ├── model/
-│   ├── task.js
-│   └── user.js
-│
 ├── routes/
-│   ├── auth.js
-│   └── tasks.js
-│
 ├── .env
 ├── .gitignore
 ├── server.js
