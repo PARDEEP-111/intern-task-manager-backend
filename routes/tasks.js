@@ -53,6 +53,7 @@ router.post("/", async (req, res) => {
 // Delet tasks
 
 router.delete("/:id", async (req, res) => {
+    
     try {
         const deletedTask = await Task.findOneAndDelete({
             _id: req.params.id,
@@ -64,7 +65,9 @@ router.delete("/:id", async (req, res) => {
             })
         }
         res.json({
-            message: "task deleted"
+            message: "task deleted.",
+            title: req.body.title
+
         })
     } catch (error) {
         res.status(500).json({
