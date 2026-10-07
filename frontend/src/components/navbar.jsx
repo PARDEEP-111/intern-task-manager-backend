@@ -1,22 +1,35 @@
+import { useState } from "react";
+
 const Navbar = () => {
-  const appear = (e) => {
-    console.log(e.target);
-    e.target.style.display = "none";
-  };
+ const [open, setOpen] = useState(false)
   return (
-    <div className=" w-full bg-black text-white  h-15 flex justify-between items-center px-19">
-      <div>Task Manager</div>
+    
+    <div className=" w-screen   border-b  absolute top-0 bg-amber-200 h-15 flex justify-between items-center px-19">
+      <div className="text-xl font-bold">Task Manager</div>
       <div
-        onClick={(e) => {
-          appear(e);
-        }}
-        className="flex gap-5 items-center"
+       
+        className="sm:flex gap-5 items-center hidden "
       >
-        <div>name4</div>
+        <div className="text-lg font-semibold">Name</div>
         <div>
-          <button>Logout</button>
+          <button className="bg-amber-500 hover:bg-amber-600 text-white py-2 px-4 rounded cursor-pointer font-bold" >Logout</button>
         </div>
       </div>
+      <button 
+      className="sm:hidden text-2xl "
+      onClick={() => setOpen(!open)}
+      aria-label="Open Menu"
+      aria-expanded={open}
+      >
+        ☰
+      </button>
+      {open && (
+        <div className="sm:hidden absolute right-5 top-14 z-10 w-44 bg-amber-400 border border-slate-200 rounded-2xl p-2">
+        
+          <button className="block w-full text-left px-3 py-2">Name</button>
+          <button className="block w-full text-left px-3 py-2">Logout</button>
+        </div>
+      )}
     </div>
   );
 };
