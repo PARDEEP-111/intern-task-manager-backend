@@ -1,9 +1,11 @@
+import AddTask from "./AddTask"
 import Navbar from "./components/navbar"
 
 const App = () => {
   return (
     <div>
-     <Navbar></Navbar>
+     <Navbar/>
+     <AddTask/>
     </div>
   )
 }
