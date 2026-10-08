@@ -1,6 +1,6 @@
 const AddTask = () => {
   return (
-    <div className=" absolute top-20 items-center flex flex-col w-screen">
+    <div className=" my-20 items-center flex flex-col w-screen">
       <div className="flex flex-col gap-5  w-full items-start ">
         <div className="w-full items-start px-10 flex flex-col gap-2">
           <div className="text-xl font-bold sm:text-3xl">My Task</div>
