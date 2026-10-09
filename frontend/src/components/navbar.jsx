@@ -4,7 +4,7 @@ const Navbar = () => {
  const [open, setOpen] = useState(false)
   return (
     
-    <div className=" w-screen   border-b  absolute top-0 bg-amber-200 h-15 flex justify-between items-center px-19">
+    <div className=" w-screen   border-b  bg-amber-200 h-15 flex justify-between items-center px-10 sm:px-20 py-2">
       <div className="text-xl font-bold">Task Manager</div>
       <div
        
