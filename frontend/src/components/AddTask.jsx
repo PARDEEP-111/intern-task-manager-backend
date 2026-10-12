@@ -1,7 +1,24 @@
 import { useState } from "react";
 
-const AddTask = () => {
+const AddTask = ({onAdd}) => {
   const [open, setOpen] = useState(false);
+  const [title, setTitle] = useState("");
+  const [description, setDescription ] = useState("");
+  
+  const handleCreate=()=>{
+if(!title.trim()){
+  return;
+}
+onAdd({
+  id: Date.now(),
+  title: title.trim(),
+  description: description.trim(),
+  status: "active", 
+});
+setTitle("");
+setDescription("");
+setOpen(false);
+  }
 
   return (
     <div className="w-full flex flex-col gap-5 px-5 sm:px-10 my-10">
@@ -14,7 +31,7 @@ const AddTask = () => {
 
       <button
         onClick={() => setOpen(true)}
-        className="border-dashed border-2 rounded-sm px-3 py-2 w-full sm:w-[80%] text-xl text-left hover:border-amber-500 focus:outline-none focus-visible:border-amber-500 cursor-pointer"
+        className="border-dashed border-2 rounded-sm px-3 py-2 w-full sm:w-[80%] text-xl text-left hover:border-amber-500 focus:outline-none focus-visible:border-amber-500 cursor-pointer hover:text-amber-500"
       >
         + Add Task
       </button>
@@ -39,9 +56,9 @@ const AddTask = () => {
                 type="text"
                 placeholder="Task title"
                 className="w-full rounded-xl border p-3 focus:outline-none focus:border-black"
-                onChange={(e)=>console.log(e.target.value)
-
-                }
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                
               />
             </div>
 
@@ -51,6 +68,8 @@ const AddTask = () => {
                 placeholder="Task description"
                 rows={4}
                 className="w-full resize-none rounded-xl border p-3 focus:outline-none focus:border-black"
+                value={description}
+                 onChange={(e) => setDescription(e.target.value)}
               />
             </div>
 
@@ -61,7 +80,10 @@ const AddTask = () => {
               >
                 Cancel
               </button>
-              <button className="rounded-lg bg-black px-4 py-2 text-white cursor-pointer">
+              <button
+                className="rounded-lg bg-black px-4 py-2 text-white cursor-pointer"
+               onClick={handleCreate}
+              >
                 Create Task
               </button>
             </div>

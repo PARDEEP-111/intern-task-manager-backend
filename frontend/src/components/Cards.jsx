@@ -14,7 +14,7 @@ const Cards = (props) => {
           <div className="">{task.title}</div>
         </div>
 
-        <div className="px-9 w-full ">{task.description}</div>
+        <div className="px-9 w-full text-sm text-gray-600 ">{task.description}</div>
         <div className="px-9 flex gap-2">
           <button className="border rounded px-3 py-1 cursor-pointer  ">Edit</button>
           <button className="border rounded px-3 py-1 cursor-pointer text-red-700">Delete</button>
