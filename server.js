@@ -3,9 +3,9 @@ const express = require("express");
 const app = express();
 const logger = require("./middleware/logger");
 const mongoose = require('mongoose');
-
+const cors = require("cors");
 app.use(logger);
-
+app.use(cors({ origin: "http://localhost:5173" }));
  app.use(express.json());
  //                                        importing routes
 const authRoutes = require("./routes/auth")
@@ -20,7 +20,7 @@ mongoose.connect("mongodb://localhost:27017/taskmanager")
     .then(() => console.log('Connected to MongoDB'))
     .catch(err => console.error('MongoDB connection error:', err));
 
- const Port = 5000;
+ const Port = 5000; 
 
  app.listen(Port,()=>{
     console.log(`port is running at ${Port}`);
