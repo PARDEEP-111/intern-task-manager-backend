@@ -55,20 +55,20 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
         ></input>
         <p className="text-sm text-red-600 w-[90%]">{error}</p>
-        <div className="flex w-[90%] gap-2">
+        <div className="flex w-[90%] items-center jus gap-2">
           <Link
             to="/Register"
-            className=" border w-[90%] rounded-lg py-2 bg-green-500 hover:bg-green-600 cursor-pointer "
+            className=" border w-[90%] rounded-lg py-2  px bg-green-500 hover:bg-green-600 cursor-pointer "
 
           >
-            register
+            Register
           </Link>
 
           <button
             className=" border w-[90%] rounded-lg py-2 bg-blue-400 hover:bg-blue-500 cursor-pointer  "
             type="submit"
           >
-            login
+            Login
           </button>
         </div>
       </form>
