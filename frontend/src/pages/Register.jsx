@@ -68,9 +68,9 @@ const Register = () => {
           value={confirmPassword}
           onChange={(e) => setConfirmPasswrod(e.target.value)}
         ></input>
-<p className="text-sm text-red-600 w-[90%]">{error}</p>
+        <p className="text-sm text-red-600 w-[90%]">{error}</p>
         <button
-          className=" border w-[90%] rounded-lg py-2 bg-green-500 hover:bg-green-600 cursor-pointer "
+          className=" border w-[90%] rounded-lg py-2  transition-colors border-primary text-primary hover:bg-primary hover:text-white cursor-pointer "
           type="submit"
           disabled={loading}
         >
@@ -79,7 +79,7 @@ const Register = () => {
       </form>
       <Link
         to="/Login"
-        className="text-blue-500 hover:underline cursor-pointer"
+        className="text-primary hover:underline cursor-pointer"
       >
         already have a account
       </Link>

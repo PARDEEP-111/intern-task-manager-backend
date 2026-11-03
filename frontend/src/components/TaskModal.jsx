@@ -34,8 +34,8 @@ const TaskModal = ({ open, onClose, onSubmit, task }) => {
     return (
         <div>
 
-            <div className="fixed inset-0 z-20 flex items-center justify-center bg-black/50 p-4">
-                <div className="w-full max-w-md max-h-[90dvh] overflow-y-auto rounded-2xl border bg-white p-4 sm:p-6 flex flex-col gap-4">
+            <div className="fixed inset-0 z-20 flex items-center justify-center bg-black/50 p-4 ">
+                <div className="w-full max-w-md max-h-[90dvh] overflow-y-auto rounded-2xl border bg-surface p-4 sm:p-6 flex flex-col gap-4">
                     <div className="flex items-center justify-between">
                         <div className="text-xl font-bold">{task ? "Edit Task" : "Add New Task"}</div>
                         <button

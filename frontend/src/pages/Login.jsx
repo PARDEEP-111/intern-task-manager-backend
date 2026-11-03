@@ -39,7 +39,7 @@ const Login = () => {
 
   return (
     <div className="h-screen  flex justify-center items-center gap-2">
-      <form onSubmit={handleSubmit} className="flex flex-col items-center justify-evenly border py-6 w-80 gap-5">
+      <form onSubmit={handleSubmit} className="flex flex-col items-center justify-evenly border rounded-2xl py-6 bg-surface w-80 gap-5">
         <input
           type="text"
           className="border w-[90%] rounded-lg py-3 px-2"
@@ -55,17 +55,18 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
         ></input>
         <p className="text-sm text-red-600 w-[90%]">{error}</p>
-        <div className="flex w-[100%] items-center justify-center jus gap-2">
+
+        <div className="flex w-full items-center justify-center jus m-2 p-2 gap-2">
           <Link
             to="/Register"
-            className=" border w-[50%] rounded-lg py-2   bg-green-500 hover:bg-green-600 cursor-pointer "
+            className=" border w-[50%] font-bold  flex items-center justify-center border-primary text-primary hover:bg-primary hover:text-white px-5 py-2 rounded-lg transition-colors"
 
           >
             Register
           </Link>
 
           <button
-            className=" border w-[50%] rounded-lg py-2 bg-blue-400 hover:bg-blue-500 cursor-pointer  "
+            className=" font-bold w-[50%] border border-primary text-primary hover:bg-primary hover:text-white px-5 py-2 rounded-lg transition-colors "
             type="submit"
           >
             Login
