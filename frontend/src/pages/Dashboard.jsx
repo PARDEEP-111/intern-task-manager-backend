@@ -1,14 +1,47 @@
 import api from "../api"
 import { useState } from "react"
+import { useEffect } from "react"
 import Navbar from "../components/navbar"
 import AddTask from "../components/AddTask"
 import CardsTab from "../components/CardsTab"
-import { useEffect } from "react"
-
+import TaskModal from '../components/TaskModal'
 const Dashboard = () => {
   const [error, seterror] = useState("")
-  const [loading, setLoading] = useState(true)
   const [tasks, setTasks] = useState([]);
+  const [loading, setLoading] = useState(true)
+  const [modalOpen, setModalOpen] = useState(false)
+  const [editingTask, setEditingTask] = useState(null);
+
+
+  const openAdd = () => {
+    setEditingTask(null)
+    setModalOpen(true)
+
+  }
+  const openEdit = (task) => {
+    setEditingTask(task)
+    setModalOpen(true)
+
+  }
+  const closeModal = () => {
+    setModalOpen(false)
+    setEditingTask(null)
+  }
+
+  const updateTask = async (data) => {
+    const res = await api.patch(`/tasks/${editingTask._id}`, data)
+    setTasks((prev) =>
+      prev.map((t) => (t._id === editingTask._id ? res.data : t))
+    )
+  }
+  const handleSubmit = async (data) => {
+    if (editingTask) {
+      await updateTask(data)
+    } else {
+      await addTask(data)
+    }
+  }
+
   useEffect(() => {
     const loadTask = async () => {
 
@@ -57,16 +90,22 @@ const Dashboard = () => {
   return (
     <div>
       <Navbar />
-      <AddTask onAdd={addTask} />
+
+      <AddTask onOpen={openAdd} />
       {loading ? (
         <p className="px-10">Loading your tasks...</p>
       ) : error ? (
         <p className="px-10 text-red-600">{error}</p>
       ) : (
-        <CardsTab tasks={tasks} onToggle={toggleTask} onDelete={deleteTask}></CardsTab>
+        <CardsTab tasks={tasks} onToggle={toggleTask} onDelete={deleteTask} onEdit={openEdit}></CardsTab>
       )}
 
-
+      <TaskModal
+        open={modalOpen}
+        onClose={closeModal}
+        onSubmit={handleSubmit}
+        task={editingTask}
+      />
     </div>
   )
 }

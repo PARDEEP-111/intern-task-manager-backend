@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Cards from "./Cards";
 
-const CardsTab = ({ tasks, onToggle, onDelete }) => {
+const CardsTab = ({ tasks, onToggle, onDelete, onEdit }) => {
   const [filter, setFilter] = useState("all");
   const shown =
     filter === "all" ? tasks
@@ -30,7 +30,7 @@ const CardsTab = ({ tasks, onToggle, onDelete }) => {
           Completed ({completedCount})
         </div>
       </div>
-      <Cards tasks={shown} onToggle={onToggle} onDelete={onDelete}></Cards>
+      <Cards tasks={shown} onToggle={onToggle} onDelete={onDelete} onEdit={onEdit}></Cards>
     </div>
   );
 };

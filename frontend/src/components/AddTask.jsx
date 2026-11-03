@@ -1,25 +1,4 @@
-import { useState } from "react";
-
-const AddTask = ({onAdd}) => {
-  const [open, setOpen] = useState(false);
-  const [title, setTitle] = useState("");
-  const [description, setDescription ] = useState("");
-  
-  const handleCreate=()=>{
-if(!title.trim()){
-  return;
-}
-onAdd({
-  id: Date.now(),
-  title: title.trim(),
-  description: description.trim(),
-  status: "active", 
-});
-setTitle("");
-setDescription("");
-setOpen(false);
-  }
-
+const AddTask = ({ onOpen }) => {
   return (
     <div className="w-full flex flex-col gap-5 px-5 sm:px-10 my-10">
       <div className="flex flex-col gap-2">
@@ -30,66 +9,11 @@ setOpen(false);
       </div>
 
       <button
-        onClick={() => setOpen(true)}
+        onClick={onOpen}
         className="border-dashed border-2 rounded-sm px-3 py-2 w-full sm:w-[80%] text-xl text-left hover:border-amber-500 focus:outline-none focus-visible:border-amber-500 cursor-pointer hover:text-amber-500"
       >
         + Add Task
       </button>
-
-      {open && (
-        <div className="fixed inset-0 z-20 flex items-center justify-center bg-black/50 p-4">
-          <div className="w-full max-w-md max-h-[90dvh] overflow-y-auto rounded-2xl border bg-white p-4 sm:p-6 flex flex-col gap-4">
-            <div className="flex items-center justify-between">
-              <div className="text-xl font-bold">Add new task</div>
-              <button
-                onClick={() => setOpen(false)}
-                className="text-xl px-2 cursor-pointer"
-                aria-label="Close"
-              >
-                X
-              </button>
-            </div>
-
-            <div className="flex flex-col gap-2">
-              <label className="font-semibold">Title</label>
-              <input
-                type="text"
-                placeholder="Task title"
-                className="w-full rounded-xl border p-3 focus:outline-none focus:border-black"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                
-              />
-            </div>
-
-            <div className="flex flex-col gap-2">
-              <label className="font-semibold">Description</label>
-              <textarea
-                placeholder="Task description"
-                rows={4}
-                className="w-full resize-none rounded-xl border p-3 focus:outline-none focus:border-black"
-                value={description}
-                 onChange={(e) => setDescription(e.target.value)}
-              />
-            </div>
-
-            <div className="flex justify-end gap-3">
-              <button
-                onClick={() => setOpen(false)}
-                className="rounded-lg border px-4 py-2 cursor-pointer"
-              >
-                Cancel
-              </button>
-              <button
-                className="rounded-lg bg-black px-4 py-2 text-white cursor-pointer"
-               onClick={handleCreate}
-              >
-                Create Task
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

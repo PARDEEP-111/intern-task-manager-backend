@@ -18,7 +18,7 @@ const Cards = (props) => {
 
           <div className="px-9 w-full text-sm text-gray-600 ">{task.description}</div>
           <div className="px-9 flex gap-2">
-            <button className="border rounded px-3 py-1 cursor-pointer  text-sm ">Edit</button>
+            <button onClick={() => props.onEdit(task)} className="border rounded px-3 py-1 cursor-pointer  text-sm ">Edit</button>
             <button onClick={() => props.onDelete(task._id)} className="border rounded px-3 py-1 cursor-pointer text-sm text-red-700">Delete</button>
           </div>
         </div>)
