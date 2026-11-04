@@ -5,7 +5,12 @@ const logger = require("./middleware/logger");
 const mongoose = require('mongoose');
 const cors = require("cors");
 app.use(logger);
-app.use(cors({ origin: "http://localhost:5173" }));
+app.use(cors({
+    origin: [
+        "http://localhost:5173",
+        "https://intern-task-manager-backend.vercel.app"
+    ]
+}));
  app.use(express.json());
  //                                        importing routes
 const authRoutes = require("./routes/auth")
