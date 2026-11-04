@@ -1,30 +1,63 @@
 const Cards = (props) => {
-
-
   return (
-    <div className="flex flex-col gap-5 w-full items-start justify-start border-t px-10 py-5 overflow-auto bg-surface">
-      {
-        props.tasks.map((task) => (<div key={task._id} className="flex flex-col  w-full  text-xl sm:w-[60%] items-start justify-evenly sm:justify-start  border-2 font-bold  py-3 rounded-2xl">
-          <div className=" flex px-2 w-full gap-2  ">
+    <div className="flex flex-col gap-4 w-full items-start border-t border-border px-5 sm:px-10 py-5">
+
+      {props.tasks.map((task) => (
+        <div
+          key={task._id}
+          className="flex flex-col gap-3 w-full sm:w-[60%] min-h-[100px] bg-surface border border-secondary rounded-xl p-4 transition-shadow hover:shadow-sm"
+        >
+
+          {/* Task title */}
+          <div className="flex items-start gap-2">
+
             <input
               type="checkbox"
               checked={task.completed}
               onChange={() => props.onToggle(task._id)}
-              className=" h-6 w-6  bg-gray-100 border-gray-300   focus:ring-2 cursor-pointer"
+              className="mt-0.5 h-5 w-5 shrink-0 accent-primary cursor-pointer"
             />
 
-            <div className={task.completed ? "line-through text-secondary" : " text-heading "}>{task.title}</div>
+            <h3
+              className={`text-base font-semibold break-words ${
+                task.completed
+                  ? "line-through text-secondary"
+                  : "text-heading"
+              }`}
+            >
+              {task.title}
+            </h3>
+
           </div>
 
-          <div className="px-9 w-full text-sm text-secondary py-2 ">{task.description}</div>
-          <div className="px-9 flex gap-2 ">
-            <button onClick={() => props.onEdit(task)} className="border rounded px-3 py-1 cursor-pointer  text-sm  font-bold text-primary hover:text-white hover:bg-primary">Edit</button>
-            <button onClick={() => props.onDelete(task._id)} className="border rounded px-3 py-1 cursor-pointer font-bold text-sm text-danger hover:bg-danger hover:text-white">Delete</button>
+          {/* Description */}
+          {task.description && (
+            <p className="text-sm text-secondary pl-7 break-words">
+              {task.description}
+            </p>
+          )}
+
+          {/* Buttons */}
+          <div className="flex items-center gap-2 pl-7 pt-1">
+
+            <button
+              onClick={() => props.onEdit(task)}
+              className="border border-primary text-primary hover:bg-primary hover:text-white rounded-md px-3 py-1 text-xs font-semibold transition-colors cursor-pointer"
+            >
+              Edit
+            </button>
+
+            <button
+              onClick={() => props.onDelete(task._id)}
+              className="border border-danger text-danger hover:bg-danger hover:text-white rounded-md px-3 py-1 text-xs font-semibold transition-colors cursor-pointer"
+            >
+              Delete
+            </button>
+
           </div>
-        </div>)
 
-        )}
-
+        </div>
+      ))}
 
     </div>
   );

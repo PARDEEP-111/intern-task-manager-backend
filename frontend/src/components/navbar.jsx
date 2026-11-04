@@ -13,8 +13,12 @@ const Navbar = () => {
 
   return (
 
-    <div className=" w-screen   border-b  bg-surface h-15 flex justify-between items-center px-10 sm:px-20 py-2">
+    <div className=" border-b  bg-surface h-16 flex justify-between items-center px-10 sm:px-20 py-2">
+      <div className="flex items-center gap-2">
+      <img src="../../public/favicon.svg" alt="Logo" className="h-10    " />
       <div className="text-xl font-bold text-heading">Task Manager</div>
+
+      </div>
       <div
 
         className="sm:flex gap-5 items-center hidden "

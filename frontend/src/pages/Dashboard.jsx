@@ -5,6 +5,7 @@ import Navbar from "../components/navbar"
 import AddTask from "../components/AddTask"
 import CardsTab from "../components/CardsTab"
 import TaskModal from '../components/TaskModal'
+import Footer from "../components/Footer"
 const Dashboard = () => {
   const [error, seterror] = useState("")
   const [tasks, setTasks] = useState([]);
@@ -88,7 +89,7 @@ const Dashboard = () => {
 
   }
   return (
-    <div>
+    <div className="flex flex-col min-h-screen bg-surface">
       <Navbar />
 
       <AddTask onOpen={openAdd} />
@@ -106,6 +107,7 @@ const Dashboard = () => {
         onSubmit={handleSubmit}
         task={editingTask}
       />
+      <Footer></Footer>
     </div>
   )
 }

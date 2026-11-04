@@ -34,9 +34,9 @@ const TaskModal = ({ open, onClose, onSubmit, task }) => {
     return (
         <div>
 
-            <div className="fixed inset-0 z-20 flex items-center justify-center bg-black/50 p-4 ">
+            <div className="fixed inset-0 z-20 flex items-center justify-center bg-black/50 p-4">
                 <div className="w-full max-w-md max-h-[90dvh] overflow-y-auto rounded-2xl border bg-surface p-4 sm:p-6 flex flex-col gap-4">
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between ">
                         <div className="text-xl font-bold">{task ? "Edit Task" : "Add New Task"}</div>
                         <button
                             onClick={onClose}
@@ -69,17 +69,17 @@ const TaskModal = ({ open, onClose, onSubmit, task }) => {
                             onChange={(e) => setDescription(e.target.value)}
                         />
                     </div>
-                    <p className="text-sm text-red-600 min-h-5">{error}</p>
+                    <p className="text-sm text-danger min-h-5">{error}</p>
                     <div className="flex justify-end gap-3">
                         <button
                             onClick={onClose}
-                            className="rounded-lg border px-4 py-2 cursor-pointer"
+                            className="rounded-lg border px-4 py-2 cursor-pointer bg-white text-danger hover:bg-danger hover:text-white transition-colors duration-75"
                         >
                             Cancel
                         </button>
 
                         <button
-                            className="rounded-lg bg-black px-4 py-2 text-white cursor-pointer"
+                            className="rounded-lg bg-primary px-4 py-2 text-white cursor-pointer hover:bg-primary/90 transition-colors duration-75"
                             onClick={handleSubmit}
                         >
                             {task ? "Update Task" : "Add Task"}
