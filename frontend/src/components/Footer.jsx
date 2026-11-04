@@ -10,13 +10,13 @@ const Footer = () => {
                 </div>
 
                 <div className="flex gap-4">
-                    <a href="YOUR_GITHUB_URL" target="_blank" rel="noopener noreferrer"
+                    <a href="https://github.com/PARDEEP-111" target="_blank" rel="noopener noreferrer"
                         aria-label="GitHub"
                         className="text-secondary hover:text-heading transition-colors">
                         <FaGithub size={21} />
                     </a>
 
-                    <a href="YOUR_LINKEDIN_URL" target="_blank" rel="noopener noreferrer"
+                    <a href="https://www.linkedin.com/in/pardeep-singh-27ba483a3/" target="_blank" rel="noopener noreferrer"
                         aria-label="LinkedIn"
                         className="text-secondary hover:text-blue-600 transition-colors">
                         <FaLinkedin size={21} />
