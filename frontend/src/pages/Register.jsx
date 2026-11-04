@@ -1,8 +1,8 @@
-import { Link, useNavigate } from "react-router-dom";
 import api from "../api"
 import { useState } from "react";
 import Footer from "../components/Footer";
-import logo from "../components/favicon.svg"
+import { Link, useNavigate } from "react-router-dom";
+
 const Register = () => {
   const [error, seterror] = useState("")
   const [username, setUsername] = useState("")
@@ -50,7 +50,7 @@ const [confirmPassword, setConfirmPassword] = useState("")
       {/* Registration form section */}
       <nav className="w-full border-b border-secondary bg-surface px-4 sm:px-12 py-3 flex justify-between items-center">
         <div className="flex items-center gap-2">
-          <img src={logo} alt="Logo" className="h-9" />
+          <img src="/frontend/src/components/favicon.svg" alt="Logo" className="h-9" />
           <div className="text-xl font-bold text-heading">Task Manager</div>
         </div>
         <Link

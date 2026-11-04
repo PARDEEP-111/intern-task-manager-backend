@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import logo from "../components/favicon.svg"
 const Navbar = () => {
   const [open, setOpen] = useState(false)
   const Name = localStorage.getItem("username")
@@ -15,7 +14,7 @@ const Navbar = () => {
 
     <div className=" border-b  bg-surface h-16 flex justify-between items-center px-10 sm:px-20 py-2">
       <div className="flex items-center gap-2">
-      <img src={logo} alt="Logo" className="h-10    " />
+      <img src="/frontend/src/components/favicon.svg" alt="Logo" className="h-10    " />
       <div className="text-xl font-bold text-heading">Task Manager</div>
 
       </div>
