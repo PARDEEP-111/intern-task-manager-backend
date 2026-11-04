@@ -7,7 +7,7 @@ const Register = () => {
   const [username, setUsername] = useState("")
   const [password, setpassword] = useState("")
   const [loading, setloading] = useState(false)
-  const [confirmPassword, setConfirmPasswrod] = useState("")
+const [confirmPassword, setConfirmPassword] = useState("")
   const navigate = useNavigate();
   const submitHandler = async (e) => {
     e.preventDefault();
