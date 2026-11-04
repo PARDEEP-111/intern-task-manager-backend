@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import api from "../api"
+import { useState } from "react";
 import Footer from "../components/Footer";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   console.log("please login");
@@ -11,6 +11,7 @@ const Login = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  loading;
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!username.trim() || !password) {
@@ -41,15 +42,17 @@ const Login = () => {
   return (
     <div className="min-h-screen flex flex-col bg-surface">
 
-      {/* Login section */}
-
+      {/* Login section  trying to fix this logo */}
       <nav className="w-full border-b border-secondary bg-surface px-4 sm:px-12 py-3 flex justify-between items-center">
         <div className="flex items-center gap-2">
-          <img src="../../public/favicon.svg" alt="Logo" className="h-9" />
+          <img src="/favicon.svg" alt="Logo" className="h-10 w-auto object-contain"
+            onLoad={() => console.log("LOGIN IMAGE LOADED")}
+            onError={(e) => console.log("LOGIN IMAGE FAILED:", e.currentTarget.src)}
+          />
           <div className="text-xl font-bold text-heading">Task Manager</div>
         </div>
         <Link
-          to="/register"
+          to="/Register"
           className="border border-primary text-primary hover:bg-primary hover:text-white px-5 py-2 rounded-lg transition-colors"
         >
           Register
