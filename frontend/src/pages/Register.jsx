@@ -50,7 +50,7 @@ const [confirmPassword, setConfirmPassword] = useState("")
       {/* Registration form section */}
       <nav className="w-full border-b border-secondary bg-surface px-4 sm:px-12 py-3 flex justify-between items-center">
         <div className="flex items-center gap-2">
-          <img src="/favicon.svg" alt="Logo" className="h-9" />
+          <img src="/favicon.svg" alt="Logo" className="h-10 w-auto object-contain"/>
           <div className="text-xl font-bold text-heading">Task Manager</div>
         </div>
         <Link
